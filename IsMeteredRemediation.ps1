@@ -1,13 +1,13 @@
 ﻿<######################################################
  ScriptPurpose: Remediates NICs that are set to be on
-    a metered connection
+     a metered connection
  Author: Mike Horton
  Date: 4/14/2020
-######################################################> 
+######################################################>
 
 
 $DUSMSvcKey = Get-ChildItem -Path "HKLM:\SOFTWARE\Microsoft\DusmSvc\Profiles" -EA SilentlyContinue
-If($DUSMSvcKey -ne $null)
+If($null -ne $DUSMSvcKey)
 {
     Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\DusmSvc\Profiles\*" -Recurse -ErrorAction SilentlyContinue
     #Create Scheduled task to force reboot in the middle of the night

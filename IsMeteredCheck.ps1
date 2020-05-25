@@ -1,13 +1,13 @@
 ﻿<######################################################
- ScriptPurpose: Check that the computer's NIC is set to 
+ ScriptPurpose: Check that the computer's NIC is set to
     a metered connections
  Author: Mike Horton
  Date: 4/6/2020
-######################################################> 
+######################################################>
 
 #If ($MeteredAction -eq "MeteredOn") { $MeteredChoice = 2 } else { $MeteredChoice = 0 }
 $DUSMSvcKey = Get-ChildItem -Path "HKLM:\SOFTWARE\Microsoft\DusmSvc\Profiles" -EA SilentlyContinue
-If($DUSMSvcKey -ne $null)
+If($null -ne $DUSMSvcKey)
 {
     Foreach($regObj in $DUSMSvcKey)
     {
@@ -18,7 +18,6 @@ If($DUSMSvcKey -ne $null)
         {
             return $true
         }
-    
     }
 }
 return $false
